@@ -12,12 +12,12 @@ service:
 ingress:
   enabled: true
   className: "nginx"
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  # annotations:
+  #   nginx.ingress.kubernetes.io/rewrite-target: /
   hosts:
     - host: webapp2.local
       paths:
-        - path: /
+        - path: /api
           pathType: Prefix
 
 resources: {}

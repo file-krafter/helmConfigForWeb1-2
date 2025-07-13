@@ -17,7 +17,7 @@ ingress:
   hosts:
     - host: webapp1.local
       paths:
-        - path: /api
+        - path: /api/messages
           pathType: Prefix
 
 resources: {}
