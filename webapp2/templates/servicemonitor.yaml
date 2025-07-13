@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: webapp2-servicemonitor
+  namespace: obserb-demo
+  labels:
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: webapp2
+  endpoints:
+    - path: /actuator/prometheus
+      port: http
+      interval: 15s
+  namespaceSelector:
+    matchNames:
+      - obserb-demo

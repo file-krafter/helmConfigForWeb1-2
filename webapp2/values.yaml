@@ -1,0 +1,30 @@
+replicaCount: 1
+
+image:
+  repository: filekrafter95/webapp2-with-pg-p-g-lt
+  tag: "v1.0.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: webapp2.local
+      paths:
+        - path: /
+          pathType: Prefix
+
+resources: {}
+
+config:
+  DB_HOST: postgres.obserb-demo.svc.cluster.local
+  DB_USER: postgres
+
+secret:
+  DB_PASSWORD: postgres
